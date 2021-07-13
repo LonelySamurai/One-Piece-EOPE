@@ -1,0 +1,282 @@
+#include <stdio.h>
+#include <iostream>
+#include "graphics.h"
+#include <iostream>
+#include<windows.h>
+#include<mmsystem.h>
+#pragma comment(lib,"winmm.lib")
+using namespace std;
+
+
+
+char c;
+int i = 0, n = 5;
+
+int x1ofzoro = 60;
+int y1ofzoro = 250;
+int x2ofzoro = 170;
+int y2ofzoro = 380;
+
+int x1ofnavy = 60;
+int y1ofnavy = 250;
+int x2ofnavy = 170;
+int y2ofnavy = 380;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+void NavyAttack(){
+
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/NA1.gif", x1ofnavy, y1ofnavy + 10, x2ofnavy + 20, y2ofnavy - 10);
+	delay(100);
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/NA2.gif", x1ofnavy, y1ofnavy + 10, x2ofnavy + 20, y2ofnavy - 10);
+	delay(100);
+
+}
+void NavyRun(){
+
+	x1ofnavy -= 20;
+	x2ofnavy -= 20;
+	//readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/NR1.gif", x1ofnavy + 950, y1ofnavy, x2ofnavy + 970, y2ofnavy - 10);
+	delay(25);
+	x1ofnavy -= 20;
+	x2ofnavy -= 20;
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/NR2.gif", x1ofnavy + 950, y1ofnavy, x2ofnavy + 970, y2ofnavy - 10);
+	delay(25);
+
+}
+
+
+
+void NavyDeath(){
+
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/ND1.gif", x1ofnavy, y1ofnavy + 10, x2ofnavy + 20, y2ofnavy - 10);
+	delay(100);
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/ND2.gif", x1ofnavy, y1ofnavy + 10, x2ofnavy + 20, y2ofnavy - 10);
+	delay(100);
+}
+//////////////////////////////////////////////////////         ////////////////////////////////////////////////////////////
+   
+   void ZoroAttack1Right()
+
+   {
+	   readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	   readimagefile("Sprites/ZA1R1.gif", x1ofzoro, y1ofzoro, x2ofzoro, y2ofzoro);
+	   delay(50);
+	   readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	   readimagefile("Sprites/ZA1R2.gif", x1ofzoro, y1ofzoro, x2ofzoro + 50, y2ofzoro);
+	   delay(50);
+	   readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	   readimagefile("Sprites/ZA1R3.gif", x1ofzoro + 10, y1ofzoro, x2ofzoro + 70, y2ofzoro);
+	   delay(50);
+   }
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	
+	void ZoroAttack1Left()
+	
+	{	
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZA1L1.gif", x1ofzoro, y1ofzoro, x2ofzoro, y2ofzoro);
+		delay(50);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZA1L2.gif", x1ofzoro, y1ofzoro, x2ofzoro, y2ofzoro);
+		delay(50);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZA1L3.gif", x1ofzoro - 40, y1ofzoro, x2ofzoro - 10, y2ofzoro);
+		delay(50);
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////
+	void ZoroAttack2Right()
+	{
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZA2R1.gif", x1ofzoro, y1ofzoro + 10, x2ofzoro + 20, y2ofzoro);
+		delay(50);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZA2R2.gif", x1ofzoro + 10, y1ofzoro + 10, x2ofzoro + 90, y2ofzoro);
+		delay(50);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZA2R3.gif", x1ofzoro + 25, y1ofzoro + 10, x2ofzoro + 90, y2ofzoro);
+		delay(50);
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////
+	void ZoroAttack2Left()
+	{
+	
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/ZA2L1.gif", x1ofzoro, y1ofzoro + 10, x2ofzoro + 20, y2ofzoro);
+	delay(50);
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/ZA2L2.gif", x1ofzoro - 70, y1ofzoro + 10, x2ofzoro - 0, y2ofzoro);
+	delay(50);
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/ZA2L3.gif", x1ofzoro - 110, y1ofzoro + 10, x2ofzoro - 5, y2ofzoro);
+	delay(50);
+
+	}
+	
+	////////////////////////////////////////////////////////////////////
+	
+	void ZoroStandRight()
+	{
+		
+			readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+			readimagefile("Sprites/ZSR1.gif", x1ofzoro - 5, y1ofzoro - 5, x2ofzoro - 20, y2ofzoro - 10);
+			delay(200);
+			readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+			readimagefile("Sprites/ZSR2.gif", x1ofzoro - 5, y1ofzoro - 5, x2ofzoro - 20, y2ofzoro - 10);
+			delay(200);
+			
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////
+	void ZoroStandLeft()
+	{
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZSL1.gif", x1ofzoro - 5, y1ofzoro  - 5, x2ofzoro - 20, y2ofzoro - 10);
+		delay(300);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZSL2.gif", x1ofzoro - 5, y1ofzoro - 5, x2ofzoro - 20, y2ofzoro - 10);
+		delay(300);
+
+	}
+	
+	
+	
+/////////////////////////////////////////////////////////////////////////
+	
+	void ZoroRunRight() {
+		
+			readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+			readimagefile("Sprites/ZRR1.gif", x1ofzoro + 15, y1ofzoro - 15, x2ofzoro - 5, y2ofzoro - 5);
+			delay(100);
+			readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+			readimagefile("Sprites/ZRR2.gif", x1ofzoro + 50, y1ofzoro - 8, x2ofzoro + 30, y2ofzoro - 5);
+			delay(100);
+		
+	}
+	//////////////////////////////////////////////////////////////////////
+
+	void ZoroRunLeft() {
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZRL1.gif", x1ofzoro - 25, y1ofzoro - 15, x2ofzoro - 40, y2ofzoro - 5);
+		delay(100);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZRL2.gif", x1ofzoro - 60, y1ofzoro - 8, x2ofzoro - 70, y2ofzoro - 5);
+		delay(100);
+	}
+
+	///////////////////////////////////////////////////////////////////////
+	void ZoroDeathRight() {
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZDR1.gif", x1ofzoro - 25, y1ofzoro, x2ofzoro - 20, y2ofzoro);
+		delay(50);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZDR2.gif", x1ofzoro - 55, y1ofzoro, x2ofzoro - 40, y2ofzoro);
+		delay(50);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZDR3.gif", x1ofzoro - 55, y1ofzoro, x2ofzoro - 20, y2ofzoro );
+		delay(50);
+	}
+	/////////////////////////////////////////////////////////////////////////
+	void ZoroSpecialRight() {
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);		
+		readimagefile("Sprites/ZSPR1.gif", x1ofzoro, y1ofzoro, x2ofzoro + 150, y2ofzoro);
+		delay(60);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZSPR2.gif", x1ofzoro, y1ofzoro, x2ofzoro + 150, y2ofzoro);
+		delay(60);
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		readimagefile("Sprites/ZSPR3.gif", x1ofzoro, y1ofzoro, x2ofzoro + 150, y2ofzoro);
+		delay(60);
+
+	}
+
+	////////////////////////////////////////////////////           ////////////////////////////////////////////////
+	
+
+	int main()
+	{
+		initwindow(1100, 400, "One Piece - Epitome Of Pirate Era");
+		readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+		
+
+
+		/*for (x1ofnavy, x2ofnavy; x1ofnavy <= x2ofzoro; x1ofnavy ++, x2ofnavy ++){
+
+			NavyRun();
+
+
+		}*/
+		
+		
+		while (1)
+		{
+					
+			
+			if (kbhit() == 0){
+
+				ZoroStandRight();
+				
+					NavyRun();
+				
+							
+			}
+
+			else if (kbhit()){
+				c = getch();
+
+				if (c == 'd'){
+
+					ZoroRunRight();
+					x1ofzoro += 40;
+					x2ofzoro += 40;
+					
+				}
+
+				if (c == 'a'){
+
+					ZoroRunLeft();
+					x1ofzoro -= 40;
+					x2ofzoro -= 40;				
+
+				}
+
+				if (c == 'p'){
+
+					ZoroAttack1Right();					
+
+				}
+
+				if (c == 'l'){
+
+					ZoroSpecialRight();
+					x1ofzoro += 10;
+					x2ofzoro += 10;
+				}
+
+				if (c == 'k'){
+
+					ZoroAttack2Right();
+					x1ofzoro += 30;
+					x2ofzoro += 30;
+					
+				}			
+			}
+		}
+							
+				while (1);
+				return 0;
+
+			}
+		

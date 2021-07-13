@@ -1,0 +1,77 @@
+#include <iostream>
+#include"graphics.h"
+#include<stdio.h>
+#include<windows.h>
+#include<mmsystem.h>
+
+
+#pragma comment(lib,"winmm.lib")
+using namespace std;
+
+
+char c;
+int x, y;
+
+void Start()
+{
+	readimagefile("Sprites/Title/C1.jpg", 0, 0, 1100, 400);
+	delay(2000);
+	readimagefile("Sprites/Title/C2.jpg", 0, 0, 1100, 400);
+	delay(2000);
+	readimagefile("Sprites/Title/C3.jpg", 0, 0, 1100, 400);
+	delay(2000);
+
+	readimagefile("Sprites/Title/Black Screen.gif", 0, 0, 1100, 400);
+	delay(500);
+
+	readimagefile("Sprites/Title/S1.gif", 0, 0, 1100, 400);
+	delay(3000);
+	readimagefile("Sprites/Title/S2.gif", 0, 0, 1100, 400);
+	delay(3000);
+	readimagefile("Sprites/Title/S3.gif", 0, 0, 1100, 400);
+	delay(3000);
+	readimagefile("Sprites/Title/S4.gif", 0, 0, 1100, 400);
+	delay(3000);
+	readimagefile("Sprites/Title/S5.gif", 0, 0, 1100, 400);
+	delay(3000);
+	readimagefile("Sprites/Title/S6.gif", 0, 0, 1100, 400);
+	delay(3000);
+}
+
+int main()
+{
+
+	initwindow(1100, 400, "One Piece - Epitome Of Pirate Era");
+         
+        PlaySound("Opening.WAV", NULL, SND_LOOP | SND_ASYNC);
+
+	readimagefile("Sprites/Title/Main 2.jpg", 0, 0, 1100, 400);
+	delay(3000);
+
+	readimagefile("Sprites/Title/Main 1.jpg", 0, 0, 1100, 400);
+	readimagefile("Sprites/Title/New Game.gif", 450, 310, 650, 250);
+
+
+	while (1)
+	{
+
+		while (!ismouseclick(WM_LBUTTONDOWN)) 
+			{
+				getmouseclick(WM_LBUTTONDOWN, x, y);
+				if (x > 200 && x<300, y>330 && y < 350)
+				{
+					Start();
+				}
+			}						
+		}
+	}
+
+
+
+
+
+
+
+	
+	
+

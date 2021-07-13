@@ -1,0 +1,6 @@
+A - Left
+F - Right
+
+J - Punch
+K - Kick
+L - Special

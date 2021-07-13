@@ -1,0 +1,961 @@
+#include <iostream>
+#include"graphics.h"
+#include<stdio.h>
+#include<windows.h>
+#include<mmsystem.h>
+
+#pragma comment(lib,"winmm.lib")
+using namespace std;
+
+
+char c;
+int x1ofhero = 10, y1ofhero = 250 - 15, x2ofhero = 110 + 35, y2ofhero = 380, inrightofhero = 1, inleftofhero = 0, lifeofluffy = 100, indexoflifebar = 9, indexofpowerbar = 0;
+int x1ofnavy = 1100 - 150, y1ofnavy = 250, x2ofnavy = 1100 - 10, y2ofnavy = 370, inleftofpirate = 1, inrightofpirate = 0;
+int rangeofnavyattack = 100, rangeofluffyattack = 100;
+
+int x1oflife = 52, x2oflife = 298, x1ofpower = 52, x2ofpower = 52;
+long long int i;
+
+char lifebar[10][11] = { "life1.gif", "life2.gif", "life3.gif", "life4.gif", "life5.gif", "life6.gif", "life7.gif", "life8.gif", "life9.gif", "life10.gif" };
+char powerbar[5][12] = { "M1.gif", "M2.gif", "M3.gif", "M4.gif", "M5.gif" };
+
+
+
+void gameover()
+{
+	char ch;
+	readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+
+	readimagefile(lifebar[indexoflifebar], 50, 50, 400, 100);
+	readimagefile(powerbar[indexofpowerbar], 50, 110, 400, 170);
+
+	readimagefile("gameover.gif", 275, 100, 775, 175);
+	readimagefile("gameoverpage.gif", 0, 0, 1100, 400);
+
+	while (ch = getch())
+	{
+		if (ch == 'p')
+			exit;
+		else if (ch == 'e')
+			exit;
+	}
+}
+
+
+
+
+
+
+void luffy()
+{
+	readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+	readimagefile("l1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+	x1ofhero -= 10, x2ofhero -= 10;
+
+	readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+	readimagefile("l2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+	x1ofhero -= 10, x2ofhero -= 10;
+
+	readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+	readimagefile("r3.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+	readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+	readimagefile("StandLeft1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+	inrightofhero = 0;
+	inleftofhero = 1;
+}
+
+void navyrun()
+{
+
+}
+void luffystand()
+{
+
+}
+
+void navyattack()
+{
+
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	setfillstyle(SOLID_FILL, BLACK);
+	bar(50, 30, 300, 45);
+
+	setfillstyle(SOLID_FILL, CYAN);
+	bar(x1oflife, 32, x2oflife, 43);
+
+
+	setfillstyle(SOLID_FILL, BLACK);
+	bar(50, 30 + 20, 300, 45 + 20);
+
+	setfillstyle(SOLID_FILL, CYAN);
+	bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+	if (inrightofhero == 1)
+		readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+	else
+		readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+	readimagefile("Sprites/NA1.gif", x1ofnavy - 20, y1ofnavy, x2ofnavy - 20, y2ofnavy);
+
+
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	setfillstyle(SOLID_FILL, BLACK);
+	bar(50, 30, 300, 45);
+
+	setfillstyle(SOLID_FILL, CYAN);
+	bar(x1oflife, 32, x2oflife, 43);
+
+
+	setfillstyle(SOLID_FILL, BLACK);
+	bar(50, 30 + 20, 300, 45 + 20);
+
+	setfillstyle(SOLID_FILL, CYAN);
+	bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+	if (inrightofhero == 1)
+		readimagefile("Sprites/ZSR2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+	else
+		readimagefile("Sprites/ZSL2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+	readimagefile("Sprites/NA2.gif", x1ofnavy - 20, y1ofnavy, x2ofnavy, y2ofnavy - 20);
+
+	x2oflife -= 25;
+	if (x2oflife <= 52)
+		gameover();
+
+}
+
+
+int main()
+{
+
+	initwindow(1100, 400, "OPEOPE");
+
+
+
+
+
+	/*readimagefile("front page.gif", 0, 0, 1100, 400);
+	delay(3000);
+
+	readimagefile("pressenterpage.gif", 0, 0, 1100, 400);
+	readimagefile("pressenter.gif", 200, 400 - 150 + 50, 700 + 200, 400 - 150 + 100 + 50);
+	getch();*/
+
+	readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+	setfillstyle(SOLID_FILL, BLACK);
+	bar(50, 30, 300, 45);
+
+	setfillstyle(SOLID_FILL, CYAN);
+	bar(x1oflife, 32, x2oflife, 43);
+
+
+	setfillstyle(SOLID_FILL, BLACK);
+	bar(50, 30 + 20, 300, 45 + 20);
+
+	setfillstyle(SOLID_FILL, CYAN);
+	bar(x1ofpower, 52, x2ofpower, 63);
+
+
+	readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+	for (i = 1; i <= 40000; i++);
+
+
+
+
+
+	while (1)
+	{
+
+
+
+
+		if (kbhit())
+
+		{
+			c = getch();
+
+
+			if (c == 'd')
+
+			{
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+				readimagefile("Sprites/ZRR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				readimagefile("Sprites/NR1.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+
+
+				x1ofhero += 20, x2ofhero += 20, x1ofnavy -= 10, x2ofnavy -= 10;
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+				readimagefile("Sprites/ZRR2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				readimagefile("Sprites/NR2.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+
+
+				x1ofhero += 10, x2ofhero += 10, x1ofnavy -= 10, x2ofnavy -= 10;
+
+/////////////////////////////////////
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+				readimagefile("Sprites/ZRR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				readimagefile("Sprites/NR1.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+				x1ofhero += 10, x2ofhero += 10, x1ofnavy -= 10, x2ofnavy -= 10;
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+				readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				readimagefile("Sprites/NR1.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+
+				inrightofhero = 1;
+				inleftofhero = 0;
+
+				rangeofluffyattack = x1ofnavy - x2ofhero;
+			}
+
+
+			else if (c == 'a')
+
+			{
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+				readimagefile("Sprites/ZRL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+				x1ofhero -= 10, x2ofhero -= 10, x1ofnavy -= 10, x2ofnavy -= 10;
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+				readimagefile("Sprites/ZRL2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+				//delay(250);
+				x1ofhero -= 10, x2ofhero -= 10, x1ofnavy -= 10, x2ofnavy -= 10;
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+				readimagefile("Sprites/ZRL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+				//delay(250);
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+				readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+				inrightofhero = 0;
+				inleftofhero = 1;
+
+			}
+
+
+			else if (c == 'p')
+			{
+				if (inrightofhero == 1)
+				{
+					if (rangeofluffyattack <= 10)
+					{
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+
+
+						readimagefile("Sprites/ZA1R1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero + 10);
+
+
+
+
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZA1R2.gif", x1ofhero + 10, y1ofhero, x2ofhero + 10, y2ofhero + 10);
+						readimagefile("Sprites/ND1.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+						delay(500);
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+						readimagefile("Sprites/ZA1R3.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero + 10);
+						readimagefile("Sprites/ND1.gif", x1ofnavy, y1ofnavy + 20, x2ofnavy, y2ofnavy + 20);
+						delay(500);
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+						readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero - 50, x2ofhero, y2ofhero);
+						readimagefile("Sprites/ND2.gif", x1ofnavy, y1ofnavy + 20, x2ofnavy, y2ofnavy + 20);
+
+					}
+					else
+					{
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+						readimagefile("Sprites/ZA1R1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero + 10);
+						readimagefile("Sprites/NR1.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+						x1ofhero += 10, x2ofhero += 10;
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZA1R2.gif", x1ofhero, y1ofhero, x2ofhero + 10, y2ofhero + 10);
+
+
+
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZA1R3.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero + 10);
+
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+					}
+				}
+
+				else
+				{
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+					readimagefile("gl1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+					x1ofnavy += 10, x2ofnavy += 10;
+
+					//delay(250);
+
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+					readimagefile("gl2.gif", x1ofhero + 10, y1ofhero, x2ofhero + 10, y2ofhero);
+
+					x1ofnavy += 10, x2ofnavy += 10;
+
+					//delay(250);
+
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+					readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				}
+			}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+			else if (c == 'k')
+			{
+				if (inrightofhero == 1)
+				{
+					if (rangeofluffyattack <= 10)
+					{
+
+
+
+
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+						readimagefile("Sprites/ZA2R1.gif", x1ofhero + 10, y1ofhero, x2ofhero + 50, y2ofhero);
+
+						delay(2000);
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZA2R2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+						delay(2000);
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZA2R3.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+						delay(2000);
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+					}
+					else
+					{
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+						readimagefile("Sprites/ZA2R1.gif", x1ofhero + 10, y1ofhero, x2ofhero + 50, y2ofhero);
+
+
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+						readimagefile("Sprites/ZA2R2.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30, 300, 45);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1oflife, 32, x2oflife, 43);
+
+
+						setfillstyle(SOLID_FILL, BLACK);
+						bar(50, 30 + 20, 300, 45 + 20);
+
+						setfillstyle(SOLID_FILL, CYAN);
+						bar(x1ofpower, 52, x2ofpower, 63);
+
+
+						readimagefile("Sprites/ZA2R3.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+						readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+						readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+					}
+				}
+
+				else
+				{
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+
+					readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+
+					x1ofnavy += 10, x2ofnavy += 10;
+
+					//delay(250);
+
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+					readimagefile("Sprites/ZA2R2.gif", x1ofhero + 10, y1ofhero, x2ofhero + 10, y2ofhero);
+
+					x1ofnavy += 10, x2ofnavy += 10;
+
+					//delay(250);
+
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+					readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				}
+			}
+
+			else if (c == '5')
+			{
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				readimagefile("crest.jpg", 0, 50, 100, 100);
+				readimagefile(lifebar[indexoflifebar], 50, 50, 400, 100);
+				readimagefile(powerbar[indexofpowerbar], 50, 110, 400, 170);
+
+
+				readimagefile("g1.gif", x1ofhero, 170, 350, 400);
+
+				//delay(250);
+
+				readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+				readimagefile("crest.jpg", 0, 50, 100, 100);
+				readimagefile(lifebar[indexoflifebar], 50, 50, 400, 100);
+				readimagefile(powerbar[indexofpowerbar], 50, 110, 400, 170);
+
+
+				readimagefile("g2.gif", x1ofhero, 170, 400, 390);
+
+				//delay(250);
+
+				x1ofhero += 90;
+				readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+				readimagefile("crest.jpg", 0, 50, 100, 100);
+				readimagefile(lifebar[indexoflifebar], 50, 50, 400, 100);
+				readimagefile(powerbar[indexofpowerbar], 50, 110, 400, 170);
+
+
+				readimagefile("g3.gif", x1ofhero, 170, 400, 390);
+
+				//delay(250);
+
+				readimagefile("level1 2.jpg", 0, 0, 1100, 400);
+				readimagefile("crest.jpg", 0, 50, 100, 100);
+				readimagefile(lifebar[indexoflifebar], 50, 50, 400, 100);
+				readimagefile(powerbar[indexofpowerbar], 50, 110, 400, 170);
+
+				readimagefile("g4.gif", 510, 200, 1010, 390);
+			}
+
+
+		}
+
+		if (kbhit() == 0)
+		{
+
+
+			if (rangeofnavyattack <-60)
+				navyattack();
+
+			else
+			{
+
+				readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30, 300, 45);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1oflife, 32, x2oflife, 43);
+
+
+				setfillstyle(SOLID_FILL, BLACK);
+				bar(50, 30 + 20, 300, 45 + 20);
+
+				setfillstyle(SOLID_FILL, CYAN);
+				bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+				if (inrightofhero == 1)
+					readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+				else
+					readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+				readimagefile("Sprites/NR1.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+				x1ofnavy -= 10, x2ofnavy -= 10;
+				rangeofnavyattack = x1ofnavy - 10 - x2ofhero;
+				rangeofluffyattack = x1ofnavy - x2ofhero;
+				if (rangeofnavyattack <-60)
+					navyattack();
+				else
+				{
+
+
+					readimagefile("Sprites/Level 2.jpg", 0, 0, 1100, 400);
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30, 300, 45);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1oflife, 32, x2oflife, 43);
+
+
+					setfillstyle(SOLID_FILL, BLACK);
+					bar(50, 30 + 20, 300, 45 + 20);
+
+					setfillstyle(SOLID_FILL, CYAN);
+					bar(x1ofpower, 52, x2ofpower, 63);
+
+
+
+					if (inrightofhero == 1)
+						readimagefile("Sprites/ZSR1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+					else
+						readimagefile("Sprites/ZSL1.gif", x1ofhero, y1ofhero, x2ofhero, y2ofhero);
+
+					readimagefile("Sprites/NR2.gif", x1ofnavy, y1ofnavy, x2ofnavy, y2ofnavy);
+
+
+
+
+
+					x1ofnavy -= 10, x2ofnavy -= 10;
+					rangeofnavyattack = x1ofnavy - 10 - x2ofhero;
+					rangeofluffyattack = x1ofnavy - x2ofhero;
+
+					if (rangeofnavyattack <-60)
+						navyattack();
+				}
+
+			}
+
+		}
+
+	}
+
+
+	getch();
+	return 0;
+}
